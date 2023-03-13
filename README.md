@@ -1,0 +1,1 @@
+﻿# Mini_project_SQL
