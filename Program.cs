@@ -12,12 +12,12 @@
         {
             Console.CursorVisible = false;
 
-            string menuMessage = "Welcome to my SQL mini project. Please select an option:";
+            string menuMessage = "Welcome to my SQL mini project! Please select an option: ";
 
             List<string> menuItems = new()
             {
-                "Create a user",
-                "Create a project",
+                "Create person",
+                "Create project",
                 "Register time",
                 "Exit"
             };
@@ -92,6 +92,11 @@
             }
 
             return 100;
+        }
+
+        public static void CreateUser()
+        {
+
         }
     }
 }
