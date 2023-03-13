@@ -16,8 +16,8 @@
 
             List<string> menuItems = new()
             {
-                "Create person",
                 "Create project",
+                "Create person",
                 "Register time",
                 "Exit"
             };
@@ -29,22 +29,22 @@
                 {
                     case 1:
                         Console.Clear();
-                        //CreateUser();
+                        //CreateProject();
                         break;
 
                     case 2:
                         Console.Clear();
-                        //CreateProject();
+                        //CreatePerson();
                         break;
 
                     case 3:
                         Console.Clear();
-                        //TimeReport();
+                        //TimeRegister();
                         break;
 
                     case 4:
                         Console.Clear();
-                        //ProgramExit();
+                        //Exit();
                         break;
                 }
             }
