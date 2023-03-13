@@ -12,13 +12,14 @@
         {
             Console.CursorVisible = false;
 
-            string menuMessage = "Welcome. Please select an option.";
+            string menuMessage = "Welcome to my SQL mini project. Please select an option:";
 
             List<string> menuItems = new()
             {
                 "Create a user",
                 "Create a project",
-                "Time report"
+                "Register time",
+                "Exit"
             };
 
             while (true)
@@ -26,19 +27,24 @@
                 int selectedMenuItem = DrawMenu(menuItems, menuMessage);
                 switch (selectedMenuItem)
                 {
-                    case 0:
+                    case 1:
                         Console.Clear();
                         //CreateUser();
                         break;
 
-                    case 1:
+                    case 2:
                         Console.Clear();
                         //CreateProject();
                         break;
 
-                    case 2:
+                    case 3:
                         Console.Clear();
                         //TimeReport();
+                        break;
+
+                    case 4:
+                        Console.Clear();
+                        //ProgramExit();
                         break;
                 }
             }
@@ -75,14 +81,6 @@
             {
                 if (menuIndex <= 0) { }
                 else { menuIndex--; }
-            }
-            else if (ckey.Key == ConsoleKey.LeftArrow)
-            {
-                Console.Clear();
-            }
-            else if (ckey.Key == ConsoleKey.RightArrow)
-            {
-                return menuIndex;
             }
             else if (ckey.Key == ConsoleKey.Enter)
             {
