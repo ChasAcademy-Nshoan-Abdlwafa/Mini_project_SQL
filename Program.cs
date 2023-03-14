@@ -1,24 +1,25 @@
 ﻿namespace Mini_project_SQL
 {
-    internal class Program
+    class Program
     {
-        static void Main(string[] args)
+        private static int menuIndex = 0;
+
+        private static void Main(string[] args)
         {
             StartMenu();
         }
 
-        static int menuIndex = 0;
-        public static void StartMenu()
+        private static void StartMenu()
         {
             Console.CursorVisible = false;
 
-            string menuMessage = "Welcome to my SQL mini project! Please select an option: ";
+            string menuMessage = " Hello and welcome to my SQL mini project. \n Please select an option:";
 
             List<string> menuItems = new()
             {
-                "Create project",
-                "Create person",
-                "Register time",
+                "Add a project",
+                "Add a person",
+                "Register time worked on a project",
                 "Exit"
             };
 
@@ -27,30 +28,30 @@
                 int selectedMenuItem = DrawMenu(menuItems, menuMessage);
                 switch (selectedMenuItem)
                 {
+                    case 0:
+                        Console.Clear();
+                        AddProject();
+                        break;
+
                     case 1:
                         Console.Clear();
-                        //CreateProject();
+                        AddPerson();
                         break;
 
                     case 2:
                         Console.Clear();
-                        //CreatePerson();
+                        TimeRegister();
                         break;
 
                     case 3:
                         Console.Clear();
-                        //TimeRegister();
-                        break;
-
-                    case 4:
-                        Console.Clear();
-                        //Exit();
+                        Exit();
                         break;
                 }
             }
         }
 
-        public static int DrawMenu(List<string> menuItem, string menuMessage)
+        private static int DrawMenu(List<string> menuItem, string menuMessage)
         {
             Console.Clear();
             Console.WriteLine("");
@@ -94,9 +95,60 @@
             return 100;
         }
 
-        public static void CreateUser()
+        private static void AddProject()
         {
+            string projectName;
 
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("\n Please enter the name of the person that you would like to add: ");
+                Console.Write(" \n ---> ");
+                projectName = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(projectName))
+                {
+                    PostgresDataAccess.AddProject(projectName);
+                    Console.WriteLine($"\n Success! {projectName} has been added to the database.");
+                    Console.Write("\n Press any key to continue.");
+                    Console.ReadLine();
+                    break;
+                }
+            }
+        }
+
+        private static void AddPerson()
+        {
+            string personName;
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("\n Please enter the name of the person that you would like to add: ");
+                Console.Write(" \n ---> ");
+                personName = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(personName))
+                {
+                    PostgresDataAccess.AddPerson(personName);
+                    Console.WriteLine($"\n Success! {personName} has been added to the database.");
+                    Console.Write("\n Press any key to continue.");
+                    Console.ReadLine();
+                    break;
+                }
+            }
+        }
+
+        private static void TimeRegister()
+        {
+            Console.Clear();
+        }
+
+        private static void Exit()
+        {
+            Console.Clear();
+            Console.WriteLine("\n Thank you for your time! Exiting application.");
+            Environment.Exit(0);
         }
     }
 }

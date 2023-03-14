@@ -5,7 +5,7 @@ using Npgsql;
 
 namespace Mini_project_SQL
 {
-    public class PostgresDataAccess //Connections are made to the database through the methods below
+    public class PostgresDataAccess //Connections are made to the database through the methods shown below
     {
         private static string LoadConnectionString(string id = "Default")
         {
@@ -60,7 +60,7 @@ namespace Mini_project_SQL
             }
         }
 
-        internal static void AppendProject(string project_name) //Inserts a new project into the table
+        internal static void AddProject(string project_name) //Inserts a project into the table
         {
             using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
             {
@@ -75,13 +75,13 @@ namespace Mini_project_SQL
             }
         }
 
-        internal static void AppendPerson(string person_name) //Inserts a new person into the table
+        internal static void AddPerson(string person_name) //Inserts a person into the table
         {
             using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
             {
                 try
                 {
-                    cnn.Query<ProjectModel>($"INSERT INTO nab_person (person_name) VALUES ('{person_name}')", new DynamicParameters());
+                    cnn.Query<PersonModel>($"INSERT INTO nab_person (person_name) VALUES ('{person_name}')", new DynamicParameters());
                 }
                 catch(PostgresException e)
                 {
@@ -90,7 +90,7 @@ namespace Mini_project_SQL
             }
         }
 
-        internal static void AppendHours(ProjectPersonModel ProjectPerson) //Inserts hours into the table
+        internal static void AddHours(ProjectPersonModel ProjectPerson) //Inserts hours worked into the table
         {
             using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
             {
