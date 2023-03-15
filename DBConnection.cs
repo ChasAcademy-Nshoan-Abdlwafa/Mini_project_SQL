@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Mini_project_SQL;
 
-public class PostgresDataAccess //Connections are made to the database through the methods shown below
+public class DBConnection //Connections are made to the database through the methods shown below
 {
     private static string LoadConnectionString(string id = "Default")
     {
@@ -44,7 +44,7 @@ public class PostgresDataAccess //Connections are made to the database through t
         }
     }
 
-    internal static List<ProjectPersonModel> LoadProjectPerson() //Fetches data regarding inner joins
+    internal static List<ProjectPersonModel> LoadProjectPerson() //Fetches data regarding inner joined tables
     {
         using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
         {
@@ -60,7 +60,7 @@ public class PostgresDataAccess //Connections are made to the database through t
         }
     }
 
-    internal static void AddProject(string project_name) //Inserts a project into the table
+    internal static void CreateProject(string project_name) //Inserts a project into the table
     {
         using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
         {
@@ -75,7 +75,7 @@ public class PostgresDataAccess //Connections are made to the database through t
         }
     }
 
-    internal static void AddPerson(string person_name) //Inserts a person into the table
+    internal static void CreatePerson(string person_name) //Inserts a person into the table
     {
         using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
         {
